@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,900&display=swap" rel="stylesheet">
+    <title>Tabaco</title>
+    <style>
+        /* Estilos generales */
+        body {
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: #0B6138;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        /* Navegación */
+        nav {
+            background-color: #777;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 100px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Contenido */
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        section h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        section ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        section ul li {
+            margin-bottom: 5px;
+        }
+
+        /* Línea horizontal */
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #ccc;
+            margin: 30px 0;
+        }
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: 50px; /* Ajusta el espaciado entre los productos */
+        }
+        
+        .product {
+            width: 300px; /* Ajusta el ancho de cada producto según tus necesidades */
+            margin-bottom: 130px; /* Espaciado entre los productos */
+        }
+        
+        /* Estilos adicionales para cada elemento del producto */
+        .product-image {
+            /* Estilos para la imagen del producto */
+        }
+        
+        .product-details {
+            /* Estilos para los detalles del producto */
+        }
+        
+        .add-to-cart {
+            /* Estilos para el botón "Agregar al carrito" */
+        }
+        .img-producto {
+            width: 150px;
+            height: 150px;
+        }
+        li {
+            list-style-type: none;
+            list-style-image: none;
+        }
+        .logout-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+          }
+          
+        .logout-container a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Supermercado Simona</h1>
+    </header>
+    <div class="logout-container">
+        <a href="{% url 'logout' %}">Cerrar sesión</a>
+    </div> 
+    <nav>
+        <ul>
+            <li><a href="/">Todos los productos</a></li>
+            <li><a href="/alimentos/">Alimentos</a></li>
+            <li><a href="/bebidas/">Bebidas</a></li>
+            <li><a href="/limpieza/">Limpieza</a></li>
+            <li><a href="/tabaco/">Tabaco</a></li>
+            <li><a href="/farmacia/">Farmacia</a></li>
+            <li><a href="/infusiones/">Infusiones</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="tabaco">
+            <h2>Tabaco</h2>
+            <br>
+            <ul class="product-list">
+                {% for producto in productos %}
+                    <li class="product">
+                            <img src="{{ producto.image_url }}" alt="Imagen del producto" class="img-producto">
+                        <div class="product-details">
+                            <h3>{{ producto.name }}</h3>
+                            <h4>{{ producto.description }}</h4>
+                            <h4>Precio: ${{ producto.price }}</h4>
+                            <button class="add-to-cart">Agregar al carrito</button>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+        
+        <hr>
+    </main>
+</body>
+</html>
